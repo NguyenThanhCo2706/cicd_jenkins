@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  tools {
+    nodejs '21.7.1'
+  }
   stages {
     stage("checkout") {
       steps {
@@ -9,13 +12,19 @@ pipeline {
 
     stage("install") {
       steps {
-        sh `npm install`
+        sh 'npm install'
+      }
+    }
+
+    stage('Install pm2'){
+      steps {
+          sh 'npm install pm2 -g'
       }
     }
 
     stage("start") {
       steps {
-        sh `npm start`
+        sh 'pm2 start server.js'
       }
     }
   }
