@@ -1,6 +1,13 @@
 pipeline {
    agent any
 
+    environment {
+        SERVER_USERNAME = credentials('SERVER_USERNAME')
+        SERVER_URL = credentials('SERVER_URL')
+
+        SERVER_SSH_KEY_FILE = credentials('SSH_KEY_FILE')
+    }
+
    stages {
        stage('Build Code') {
            steps {
@@ -11,9 +18,7 @@ pipeline {
        }
       stage('Deploy Code') {
           steps {
-               sh """
-               echo "Deploying Code from Develop Branch"
-               """
+               sh 'chmod +x ./deploy.sh && ./deploy.sh'
           }
       }
    }
