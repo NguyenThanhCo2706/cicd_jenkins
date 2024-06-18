@@ -11,5 +11,6 @@ ssh -i $SERVER_SSH_KEY_FILE -o StrictHostKeyChecking=no ubuntu@ec2-3-1-6-106.ap-
   cd cicd
   git pull
   cd ../
+  export PATH=$PATH:/usr/local/bin
   pm2 restart server
 '
