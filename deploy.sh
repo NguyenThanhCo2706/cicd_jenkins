@@ -7,6 +7,6 @@ rm -f $SSH_KEY_FILE
 cat $SERVER_SSH_KEY_FILE > $SSH_KEY_FILE
 chmod 400 $SSH_KEY_FILE
 
-ssh -i $SERVER_SSH_KEY_FILE ubuntu@ec2-3-1-6-106.ap-southeast-1.compute.amazonaws.com '
+ssh -i $SERVER_SSH_KEY_FILE -o StrictHostKeyChecking=no ubuntu@ec2-3-1-6-106.ap-southeast-1.compute.amazonaws.com '
   cd cicd
 '
