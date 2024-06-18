@@ -9,4 +9,6 @@ chmod 400 $SSH_KEY_FILE
 
 ssh -i $SERVER_SSH_KEY_FILE -o StrictHostKeyChecking=no ubuntu@ec2-3-1-6-106.ap-southeast-1.compute.amazonaws.com '
   cd cicd
+  git pull
+  pm2 restart server
 '
