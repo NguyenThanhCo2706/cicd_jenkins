@@ -8,18 +8,16 @@ pipeline {
         SERVER_SSH_KEY_FILE = credentials('SSH_KEY_FILE')
     }
 
-   stages {
-       stage('Build Code') {
-           steps {
-               sh """
-               echo "Building Artifact from Develop Branch"
-               """
-           }
-       }
-      stage('Deploy Code') {
-          steps {
-               sh 'chmod +x ./deploy.sh && ./deploy.sh'
-          }
-      }
-   }
+    stages {
+        stage('Build Code') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Deploy Code') {
+            steps {
+                sh 'chmod +x ./deploy.sh && ./deploy.sh'
+            }
+        }
+    }
 }
